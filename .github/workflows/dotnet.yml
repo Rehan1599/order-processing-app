@@ -1,0 +1,25 @@
+name: .NET Build & Test
+
+on: [push, pull_request]  # Jab bhi koi push ya pull request karega, ye action chalega.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # Linux server par build aur test chalega.
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # GitHub repository checkout karega.
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x'  # .NET 8 use karein.
+
+      - name: Restore Dependencies
+        run: dotnet restore  # NuGet packages restore karega.
+
+      - name: Build Project
+        run: dotnet build --no-restore  # Build karega.
+
+      - name: Run Tests
+        run: dotnet test --no-build --verbosity normal  # Automated tests run karega.
