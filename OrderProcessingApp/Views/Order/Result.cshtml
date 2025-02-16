@@ -1,0 +1,94 @@
+﻿ @model OrderProcessingApp.Models.Order
+@{
+    ViewData["Title"] = "Order Result";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OrderProcessingApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OrderProcessingApp.styles.css" asp-append-version="true" />
+    <style>
+        /* Apply glassmorphism effect to body */
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #a8c0ff, #3f2b96); /* Background gradient */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Main container with glassmorphism */
+        .container {
+            padding-top: 50px;
+        }
+
+        /* Glassmorphism effect for the order summary */
+        .order-summary {
+            background: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px); /* Glass effect */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .link-NewOrder {
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            padding: 10px 20px;
+            background-color: #00bcd4;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+            .link-NewOrder:hover {
+                background-color: #0097a7;
+            }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #fff;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="order-summary">
+            <h2>Order Summary</h2>
+
+            <p>Order Amount: $@Model.OrderAmount</p>
+            <p>Customer Type: @Model.CustomerType</p>
+            <p>Discount Applied: $@Model.Discount</p>
+            <p>Final Total: $@Model.FinalTotal</p>
+
+            <a href="/Order/Index" class="link-NewOrder">Place Another Order</a>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
